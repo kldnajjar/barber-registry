@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+/* Clean minimal — one accent, plenty of space */
+:root {
+  --bg: #fafafa;
+  --surface: #ffffff;
+  --border: #e5e7eb;
+  --text: #111827;
+  --text-muted: #6b7280;
+  --accent: #0d9488;
+  --accent-hover: #0f766e;
+  --gold: #0d9488;
+  --gold-light: #0f766e;
+  --accent-bg: #f0fdfa;
+  --brand: #111827;
+  --brand-light: #374151;
+  --font-display: "Poppins", system-ui, sans-serif;
+  --font-sans: "Cairo", system-ui, sans-serif;
+  --font-arabic: "Cairo", system-ui, sans-serif;
+}
+[dir="rtl"] body {
+  font-family: var(--font-arabic);
+}
+[dir="rtl"] .font-display {
+  font-family: var(--font-arabic);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+button:not(:disabled),
+a[href],
+select,
+[role="button"] {
+  cursor: pointer;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
+}
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: var(--bg);
+  border-radius: 3px;
+}
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Animations */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes check-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes ring-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(13, 148, 136, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(13, 148, 136, 0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.4s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.35s ease-out forwards;
+}
+
+.animate-check-draw {
+  stroke-dasharray: 28;
+  stroke-dashoffset: 28;
+  animation: check-draw 0.5s ease-out 0.25s forwards;
+}
+
+.animate-ring-pulse {
+  animation: ring-pulse 1.2s ease-in-out 0.5s 2;
+}
+
+@keyframes image-float {
+  0%, 100% {
+    transform: scale(1) translateY(0);
+  }
+  50% {
+    transform: scale(1) translateY(-6px);
+  }
+}
+
+.animate-hero-image {
+  animation: scale-in 0.6s ease-out forwards,
+    image-float 3s ease-in-out 0.7s infinite;
+}

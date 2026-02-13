@@ -1,0 +1,10 @@
+node_modules
+dist
+.env
+.env.local
+*.log
+.DS_Store
+server/data/schedule.json
+server/data/bookings.db
+server/data/bookings.db-wal
+server/data/bookings.db-shm
