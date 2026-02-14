@@ -10,7 +10,7 @@ export function Footer() {
         </p>
         <div className="flex items-center gap-4 sm:gap-6 text-sm flex-wrap">
           <a
-            href="https://www.instagram.com/awad7attawi/"
+            href="https://www.instagram.com/hatawi_jo"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center transition-opacity hover:opacity-80"

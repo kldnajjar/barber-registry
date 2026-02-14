@@ -38,7 +38,9 @@ export default function App() {
         }
       ],
       "url": "https://barber-registry.vercel.app/",
-      "sameAs": []
+      "sameAs": [
+        "https://www.instagram.com/hatawi_jo"
+      ]
     }
     
     // Remove existing structured data script if any
