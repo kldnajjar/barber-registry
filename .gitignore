@@ -4,6 +4,7 @@ dist
 .env.local
 *.log
 .DS_Store
+.kiro
 server/data/schedule.json
 server/data/bookings.db
 server/data/bookings.db-wal
