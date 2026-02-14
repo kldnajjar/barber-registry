@@ -85,7 +85,24 @@ export default async function handler(request, response) {
     )
     
     // Calculate available slots (all slots minus booked)
-    const availableSlots = allSlots.filter(slot => !bookedTimes.has(slot))
+    let availableSlots = allSlots.filter(slot => !bookedTimes.has(slot))
+    
+    // Filter out past time slots if the date is today
+    const today = new Date()
+    const todayIso = today.toISOString().split('T')[0]
+    
+    if (date === todayIso) {
+      const now = new Date()
+      const currentHour = now.getHours()
+      const currentMinute = now.getMinutes()
+      const currentTimeInMinutes = currentHour * 60 + currentMinute
+      
+      availableSlots = availableSlots.filter(slot => {
+        const [slotHour, slotMinute] = slot.split(':').map(Number)
+        const slotTimeInMinutes = slotHour * 60 + slotMinute
+        return slotTimeInMinutes > currentTimeInMinutes
+      })
+    }
     
     return response.status(200).json({ 
       available: availableSlots 

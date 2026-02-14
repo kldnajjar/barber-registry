@@ -1,6 +1,7 @@
 import { sql } from '../lib/db.js'
 import { getDefaultSchedule, normalizeTime, buildSlotTimes, isDateInVacation } from '../lib/schedule-utils.js'
 import { sendBookingEmail } from '../lib/email.js'
+import { sendWhatsAppNotification } from '../lib/whatsapp.js'
 
 /**
  * Serverless function handler for booking creation
@@ -113,6 +114,15 @@ export default async function handler(request, response) {
     // Send email notification using sendBookingEmail()
     // This doesn't throw errors - it logs them instead
     await sendBookingEmail({
+      name,
+      email,
+      date,
+      time: normalizedTime
+    })
+    
+    // Send WhatsApp notification
+    // This doesn't throw errors - it logs them instead
+    await sendWhatsAppNotification({
       name,
       email,
       date,

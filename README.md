@@ -149,6 +149,12 @@ In your Vercel project dashboard, go to **Settings** → **Environment Variables
   - For Gmail: Create an [App Password](https://myaccount.google.com/apppasswords)
   - Set for: **Production** (and optionally Preview)
 
+**Optional (for WhatsApp notifications):**
+- `WHATSAPP_NUMBER` - Phone number to receive booking notifications (e.g., `+962777262605`)
+  - Format: +[country code][number]
+  - Set for: **Production** (and optionally Preview)
+  - Note: Currently logs notifications to console. To enable actual WhatsApp sending, integrate with Twilio or WhatsApp Business API
+
 **Optional (for admin protection):**
 - `ADMIN_SECRET` - Secret key for protecting admin panel
   - Generate a secure random string (e.g., `openssl rand -base64 32`)

@@ -203,7 +203,7 @@ function isDateInVacation(isoDate, ranges) {
  * @param {string} locale - 'en' | 'ar'
  * @param {number} weeks - number of weeks to include
  * @param {number[]} openDays - weekdays that are open (0=Sun .. 6=Sat), e.g. [1,2,3,4,5,6] for Mon–Sat
- * @param {number} startOffsetDays - days from today to start (0 = from today, 14 = next 2 weeks)
+ * @param {number} startOffsetDays - days from today to start (0 = from today, 14 = next 2 weeks, -14 = past 2 weeks)
  * @param {Array<{start:string,end:string}>} vacationRanges - closed date ranges (YYYY-MM-DD)
  */
 export function getOpenDates(locale, weeks = 2, openDays = [1, 2, 3, 4, 5, 6], startOffsetDays = 0, vacationRanges = []) {

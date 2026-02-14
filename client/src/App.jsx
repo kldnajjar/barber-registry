@@ -14,6 +14,51 @@ export default function App() {
 
   useEffect(() => {
     document.title = t('siteTitle')
+    
+    // Add structured data for SEO
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Awad Hitawi Barber",
+      "image": "https://barber-registry.vercel.app/awad.jpeg",
+      "description": "Professional barber services in Jordan. Book your haircut appointment online with Awad Hitawi, master barber.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "JO"
+      },
+      "telephone": "+962787806337",
+      "email": "awadhetawy@gmail.com",
+      "priceRange": "$$",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "12:00",
+          "closes": "21:00"
+        }
+      ],
+      "url": "https://barber-registry.vercel.app/",
+      "sameAs": []
+    }
+    
+    // Remove existing structured data script if any
+    const existingScript = document.querySelector('script[type="application/ld+json"]')
+    if (existingScript) {
+      existingScript.remove()
+    }
+    
+    // Add new structured data
+    const script = document.createElement('script')
+    script.type = 'application/ld+json'
+    script.text = JSON.stringify(structuredData)
+    document.head.appendChild(script)
+    
+    return () => {
+      const scriptToRemove = document.querySelector('script[type="application/ld+json"]')
+      if (scriptToRemove) {
+        scriptToRemove.remove()
+      }
+    }
   }, [locale, t])
 
   useEffect(() => {
